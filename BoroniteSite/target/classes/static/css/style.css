@@ -1,0 +1,103 @@
+
+decision-table {
+	font-family: lucida grande;
+ 	font-size: 12px;
+}
+
+.decisionTable {
+  text-align: center;
+  border-collapse: collapse;
+
+}
+
+.decisionTable td, .decisionTable th {
+  border: 1px solid black;
+  padding: 5px;
+
+  min-width: 80px;
+  max-width: 100px;
+  word-wrap: break-word;
+}
+
+.decisionTable td {
+	cursor: cell;
+
+}
+
+.decisionTable .selected {
+	border: 2px solid blue;
+}
+
+.dtEditor {
+	line-height: 160%;
+	border: 1px solid black;
+	border-radius: 4px;
+	display: inline-block;
+	margin-bottom: 4px;
+	padding: 4px;
+}
+
+.dtEditor input[type=text] {
+	width: 250px;
+}
+
+.dtAttribute {
+	font-weight: normal;
+}
+.dtAttribute ul {
+	list-style: none;
+	padding-left: 0px;
+}
+
+.dtConditions {
+  background-color: #F2F2F2;
+}
+
+.dragOver {
+  background-color: blue;
+  background-color: rgba(0,0,255,0.3);
+}
+
+.dragging {
+  opacity: 0.4;
+}
+
+.inlineBlock {
+	display: inline-block;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.decisionTable button {
+	float: right;
+}
+
+.decisionTable input {
+	width: 72px;
+}
+
+.noSelect {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hiddenButtons {
+	visibility: hidden;
+}
+
+branch ul {
+	list-style: none;
+	margin-left: 0px;
+	padding-left: 30px;
+}
+
+branch ul li {
+	margin: 5px;
+	margin-left: 0px;
+	padding-left: 0px;
+}

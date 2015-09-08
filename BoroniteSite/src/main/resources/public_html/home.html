@@ -1,0 +1,31 @@
+
+<div>
+
+    <div class="honeycombImages fadeIn" ng-show="showImages">
+        <img style="position: absolute;" ng-repeat="hex in imgHexes"
+             ng-attr-src="{{hex.url}}"
+             ng-style="{top: hex.pos.y + 'px', left: hex.pos.x - 30 + 'px', width: imgWidth + 'px', height: imgHeight + 'px'}"/>
+
+    </div>
+
+    <svg width="100%" height="219px" style="border: 1px solid black;">
+        <g ng-if="showImages">
+            <path ng-repeat="path in maskHexes" d="" ng-attr-d="{{path.string}}" fill="white"></path>
+
+            <path class="honeycombImageHex" ng-repeat="hex in imgHexes" d="" ng-attr-d="{{hex.path.string}}"
+                  fill="black" fill-opacity="0" stroke="black" stroke-width="1" ng-click="clickedHex(hex)"></path>
+        </g>
+
+        <g style="{{lineStyle}}" stroke="grey" stroke-width="1" ng-attr-transform="{{transform}}">
+            <path ng-repeat="path in dashedLines" d="" ng-attr-d="{{path.string}}"
+                  style="stroke: {{path.stroke}}"></path>
+        </g>
+
+
+    </svg>
+
+</div>
+
+<div class="homeImagePopup fadeInFast" ng-if="selectedImage" >
+    <img class="homeImagePopupContent" ng-attr-src="{{selectedImage}}"/>
+</div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boronite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--css-->
+    <link rel="stylesheet" href="css/boroniteStyle.css"/>
+
+    <!--favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+
+    <!--jquery-->
+    <!--todo get jquery cdn-->
+    <script src="js/libraries/jquery.min.js"></script>
+
+    <!--angular-->
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js"></script>-->
+    <script src="js/libraries/angular.min.js"></script>
+
+</head>
+
+<body>
+<div ng-app="BoroniteApp" id="appDiv" ng-controller="BoroniteCtrl">
+    <div id="header">
+        <table id="headerTable">
+            <tr>
+                <td>
+                    <img src="images/logo_final_only_300dpi.svg" class="logo"/>
+                </td>
+
+                <td id="title" class="bnRed"> Boronite</td>
+
+                <td id="separator"></td>
+
+                <td class="menuItem" ng-repeat="menuItem in menuItems" ng-click="clickedMenuItem(menuItem)"
+                    ng-class="{selected: menuItem === selectedMenuItem}">
+                    <div>
+                        {{menuItem.name}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="content" ng-include="selectedMenuItem.directive"></div>
+    <div id="footer">
+
+    </div>
+</div>
+
+
+<!--scripts-->
+<script src="js/app.js"></script>
+
+
+</body>
+</html>

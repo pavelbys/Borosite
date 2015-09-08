@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CSSReset.com - Demo - How To Keep Footer At Bottom of Page</title>
+    <link rel="shortcut icon" href="http://www.cssreset.com/favicon.png" />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <!--[if lt IE 7]>
+    <style type="text/css">
+        #wrapper { height:100%; }
+    </style>
+    <![endif]-->
+
+    <!-- Demo-specific (unnecessary) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			var yay = 0, text = $('#content').find('.blah').text();
+			$('#add-content').click(function() {
+				if ( !yay ) {
+					$('#content').find('.box').append('<h2>Yay!</h2>');
+					yay = 1;
+				}
+				$('#content').find('.box').append('<p>'+text+'</p>');
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <div id="header">
+        <div class="box">
+            <h1>And STAY Down! How To Keep Your Footer At The Bottom Of The Page With CSS</h1>
+            <p>An original demo and tutorial from CSSReset.com, demonstrating how to keep the footer at the bottom of the page with pure, valid CSS and no tricks and hacks. <strong>Tutorial &raquo;</strong> <a href="http://www.cssreset.com/2010/css-tutorials/how-to-keep-footer-at-bottom-of-page-with-css/" title="How To Keep Your Footer At The Bottom Of The Page With CSS">How To Keep Your Footer At The Bottom Of The Page With CSS</a></p>
+        </div><!-- .box -->
+    </div><!-- #header -->
+
+    <div id="content">
+        <div class="box">
+            <p>
+                <a href="http://www.cssreset.com/2010/css-tutorials/how-to-keep-footer-at-bottom-of-page-with-css/" title="Back to: How To Keep Your Footer At The Bottom Of The Page With CSS"><small>&laquo; Back to tutorial</small></a>
+            </p>
+            <h2>This is your content</h2>
+            <p>Try resizing the window, or adding some more content with the button below, to see how the footer is affected.</p>
+
+            <p>
+                <a id="add-content" class="large left orange button" href="#" title="Add More Content">Add More Content &raquo;</a>
+                <a class="large right blue button" href="http://www.cssreset.com/demos/layouts/how-to-keep-footer-at-bottom-of-page-with-css/CSSReset.com - Keeping Footer At The Bottom Of The Page.zip" title="Download Source">Download Source Code &raquo;</a>
+            </p>
+
+            <div class="clear"></div>
+
+            <p class="blah">Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+
+        </div><!-- .box -->
+    </div><!-- #content -->
+
+    <div id="footer">
+        <div class="box">
+            <h2>This is your tearaway footer</h2>
+            <p>It will stick to the bottom of the viewport on short pages, or stretch down on long pages.</p>
+        </div><!-- .box -->
+    </div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div ng-show="functionView" pop-up>
+            <div>
+                <input type="button" class="deleteButton deleteCol" value="&#10005;" ng-click="exposeFunctionEditor()"/>
+                <div pop-up ng-show="state === 'variableCreation'">
+                    <variable-creator></variable-creator>
+                </div>
+                <table class="functionTable">
+                    <tr>
+                        <td ng-repeat="bool in bools" ng-click="insertSymbol(bool)">
+                            <div class="functionTableCell">{{bool}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="subFunction in subFunctionList" ng-click="getFuncArgs(subFunction)">
+                            <div class="functionTableCell">{{subFunction.name}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="conditional in conditionals" ng-click="insertSymbol(conditional)">
+                            <div class="functionTableCell">{{conditional}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="parenthesis in parantheses" ng-click="insertSymbol(paranthesis)">
+                            <div class="functionTableCell">{{paranthesis}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ng-repeat="operator in operators" ng-click="insertSymbol(operator)">
+                            <div class="functionTableCell">{{operator}}</div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="functionTable">
+                    <tr>
+                        <td id="addVariableButton" ng-click="addVariable()">+Add Variable</td>
+                        <td ng-repeat="variable in variables" 
+                            ng-click="insertSymbol('(' + variable[0].name + ': ' + variable[1].name + ')')">
+                            ({{variable[0].name}}: {{variable[1].name}})
+                        </td>
+                    </tr>
+                </table>
+                <div class="block">
+                    <input type="button" value="&#10003;" ng-click="exposeFunctionEditor()"/>
+                </div>
+                <div class="block">
+                    <input id="currentFunc2" type="text" ng-model="selected.rule.values[selected.attribute]" 
+                           ng-focus="focusEditor()" ng-blur="blurEditor()"/>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <input type="button" value="&#402;(x)" ng-click="exposeFunctionEditor()"/>
+        </div>
+        <div class="block">
+            <input id="currentFunc2" type="text" ng-model="selected.rule.values[selected.attribute]" 
+                            focus-me="{{selected.editing && selected.formulaEditing}}" ng-focus="focusEditor()" ng-blur="blurEditor()"/>
+        </div>
+    </body>
+</html>

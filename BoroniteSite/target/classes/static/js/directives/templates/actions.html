@@ -1,0 +1,42 @@
+<div class="actions">
+    <span class="bold">Do the following:</span>
+    <ol>
+        <li ng-repeat="action in data.actions"
+            ng-mouseenter="action.showButtons = true" ng-mouseleave="action.showButtons = false">
+            <span class="inlineBlock" ng-hide="currentlyEditing === $index">
+                {{action.toString()}}
+            </span>
+            <span ng-show="currentlyEditing === $index">
+                {{action.object.name}}:
+
+                <select ng-options="attribute.name for attribute in action.object.attributes track by attribute.name"
+                        ng-model="action.attribute"></select>
+
+                <input type="number" ng-model="action.value"/>
+
+                <input type="button" value="done" ng-click="doneEditing()">
+            </span>
+            <div class="inlineBlock" ng-class="{hiddenButtons: !action.showButtons}">
+                <input type="button" value="edit" ng-hide="currentlyEditing === $index" ng-click="editAction($index)"/>
+                <input type="button" value="delete" ng-click="deleteAction($index)"/>
+            </div>
+
+        </li>
+    </ol>
+    <input type="button" value="add action..." ng-click="addAction()"/>
+
+</div>
+<pop-up ng-show="newActionVisible">
+    <div>
+        <select ng-options="object.name for object in actionObjectList track by object.name"
+                ng-model="newAction.object"></select>
+
+        <select ng-options="attribute.name for attribute in newAction.object.attributes track by attribute.name"
+                ng-model="newAction.attribute" ng-click="actionDropdownsSelected = false"></select>
+
+        <input type="number" ng-model="newAction.value"/>
+
+        <input id="actionDropdownDone" type="button" value="done" ng-disabled="actionDropdownsSelected" ng-click="newActionComplete()">
+        <input type="button" value="cancel" ng-click="newActionCancel()">
+    </div>
+</pop-up>

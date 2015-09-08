@@ -1,0 +1,22 @@
+<table id="previewTable">
+    <caption>Rule 1</caption>
+    <thead>
+        <tr>
+            <th>Person&nbsp;<input type="button" class="btn-xs" value="+" ng-click="addRow()"/></th>
+            <th>Height</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody id="previewBody">
+        <tr class="isTrue">
+            <td ng-dblclick="editCell(this)"><span ng-hide="editing">Bob</span><input type="text" ng-show="editing" ng-model="newVal" ng-blur="editing = false"/></td>
+            <td ng-dblclick="editCell(this)">= 5'</td>
+            <td ng-dblclick="editCell(this)">> 6</td>
+        </tr>
+        <tr>
+            <td ng-dblclick="editCell(this)">Allen</td>
+            <td ng-dblclick="editCell(this)" class="isFalse">= 7</td>
+            <td ng-dblclick="editCell(this)" class="isFalse">> 22</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+<div class="inlineBlock" ng-mouseenter="showButtons = true" ng-mouseleave="showButtons = false">
+    <input type="checkbox" ng-model="node.value.isTrue" ng-change="truthChanged()">
+    <span ng-hide="editing" ng-class="{isTrue: node.value.isTrue}">
+        {{node.value.data.toString()}}
+    </span>
+    <span ng-show="editing">
+        {{node.value.data.object.name}}:
+        
+        <select ng-options="attribute.name for attribute in node.value.data.object.attributes track by attribute.name"
+                ng-model="node.value.data.attribute"></select>
+
+        <select ng-options="conditional for conditional in node.value.data.attribute.conditionals"
+                ng-model="node.value.data.conditional" ng-click="conditionDropdownsSelected = false"></select>
+        
+        <input type="number" ng-model="node.value.data.value"/>
+        
+        <input type="button" value="done" ng-click="doneEditing()">
+    </span>
+    <span ng-class="{hiddenButtons: !showButtons}" ng-hide="editing">
+        <input type="button" value="edit" ng-click="editing = true">
+        <input type="button" value="delete" ng-click="deleteSelf()">
+    </span>
+</div>

@@ -1,0 +1,23 @@
+home content
+<br>
+{{test}}
+
+<svg width="100%" height="200px" style="border: 1px solid black;" >
+    <!--<path ng-repeat="line in honeycombLines" d="" ng-attr-d="{{honeycombLines[0].string}}" stroke="grey" stroke-width="1" fill="none"></path>-->
+
+    <!--<g class="hexagons" ng-attr-transform="scale({{scale}})">-->
+    <!--<path class="hexagon" ng-repeat="point in points" d="" ng-attr-d="{{hexagon.string}}"-->
+    <!--ng-attr-transform="translate({{point.x}}, {{point.y}})"-->
+    <!--fill="white" stroke="grey" stroke-width="1"></path>-->
+    <!--</g>-->
+    <g style="{{lineStyle}}" stroke="grey" stroke-width="1" ng-attr-transform="{{transform}}">
+    <!--<g style="{{lineStyle}}" stroke="grey" stroke-width="1" ng-attr-transform="scale({{scale}})">-->
+        <path ng-repeat="path in dashedLines" d="" ng-attr-d="{{path.string}}" style="stroke: {{path.stroke}}"></path>
+    </g>
+
+    <!--<g ng-attr-transform="scale({{scale}})">-->
+    <!--<path ng-repeat="path in honeycombLines" d="" ng-attr-d="{{path.string}}" stroke="grey" stroke-width="1"-->
+    <!--fill="none"></path>-->
+    <!--</g>-->
+    <!--<path d="" ng-attr-d="{{honeycomb.string}}" stroke="grey" stroke-width="1" fill="none" ng-attr-transform="scale({{scale}})"></path>-->
+</svg>

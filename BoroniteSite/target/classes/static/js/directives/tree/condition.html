@@ -1,0 +1,19 @@
+<div class="inlineBlock" ng-mouseenter="showButtons = true" ng-mouseleave="showButtons = false">
+
+    <div class="inlineBlock">
+        <div class="expressionEditorContainer">
+
+            <div class="editableDiv expressionEditor" add-html="colorHtml" style="top: 7px">
+            </div>
+            <div contenteditable="true" spellcheck="false" class="editableDiv expressionEditor" ng-model="node.value.input" ng-change="addColor()"
+                 style="color: rgba(0,0,0,0.4); top: 7px">
+            </div>
+        </div>
+
+    </div>
+
+
+    <div ng-class="{hiddenButtons: !showButtons}" class="inlineBlock">
+        <input type="button" value="delete" ng-click="deleteSelf()">
+    </div>
+</div>

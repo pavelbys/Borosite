@@ -1,0 +1,58 @@
+<div style="padding: 10px; margin: 10px; display: inline-block">
+    <!--<div style="text-decoration: underline; text-align: center">Inputs:</div>-->
+    <table>
+        <tr title="{{varsString()}}">
+            <th colspan="3">
+                <input type="button" value="-" ng-hide="varsCollapsed" ng-click="varsCollapsed=true">
+                <input type="button" value="+" ng-show="varsCollapsed" ng-click="varsCollapsed=false">
+                <span style="text-decoration: underline">Inputs</span>
+            </th>
+        </tr>
+        <tr ng-repeat="var in vars" ng-hide="varsCollapsed" ng-mouseenter="var.showButtons=true", ng-mouseleave="var.showButtons=false" title="{{var.title}}">
+            <td style="padding-left: 40px;">
+                <div style="color: blue; width: 90px" class="editableDiv inlineBlock" contenteditable="true" ng-model="var.key"></div>
+            </td>
+            <td style="padding-left: 4px">
+                <strong>:</strong>
+            </td>
+            <td style="padding-top: 4px; padding-left: 4px;">
+                <div class="expressionEditorContainer" style="width: 200px">
+
+                    <div class="editableDiv expressionEditor" add-html="var.colorHtml" spellcheck="false">
+                    </div>
+                    <div contenteditable="true" class="editableDiv expressionEditor" ng-model="var.value"
+                         ng-change="addColor(var)" style="color: rgba(0,0,0,0.4)" spellcheck="false">
+                    </div>
+                </div>
+            </td>
+            <td style="padding-left: 4px; font-style: italic">
+                {{var.result}}
+            </td>
+            <td style="padding-left: 4px">
+                <input type="button" value="delete" ng-click="deleteVar(var)" ng-class="{hiddenButtons: !var.showButtons}"/>
+            </td>
+        </tr>
+        <tr ng-hide="varsCollapsed">
+            <td style="padding-left: 40px;">
+                <input type="button" value="add input" ng-click="addVar()"/>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <div>
+        <input type="button" value="-" ng-hide="treeCollapsed" ng-click="treeCollapsed=true">
+        <input type="button" value="+" ng-show="treeCollapsed" ng-click="treeCollapsed=false">
+        <span style="font-weight: bold; text-decoration: underline">Expression:</span>
+        {{makeExpression(root)}}
+
+        <div ng-hide="treeCollapsed">
+            <branch node="root" vars="updateVarsObj()"></branch>
+            <!--<div>-->
+                <!--{{makeExpression(root)}}: <span style="color: green">{{evaluateExpression()}}</span>-->
+            <!--</div>-->
+            Result:
+            <span style="color: green">{{evaluateExpression()}}</span>
+        </div>
+
+    </div>
+</div>
