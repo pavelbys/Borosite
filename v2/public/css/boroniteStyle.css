@@ -1,0 +1,200 @@
+.hexagons {
+	cursor: pointer;
+}
+.hexagon:hover {
+	fill: #ee3337;
+}
+
+
+.test {
+	background-image: url('../images/unnamed.jpg');
+
+	width: 500px;
+	height: 500px;
+
+	color: white;
+	text-align: center;
+}
+
+* {
+    font-family: sans-serif;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	height: 100%;
+}
+
+.bnRed {
+	color: #ee3337;
+}
+
+#appDiv {
+	min-height: 100%;
+	position: relative;
+}
+
+#header {
+	background-color: #D3D3D3;
+	padding: 8px;
+}
+
+#content {
+	padding: 20px;
+	padding-bottom: 100px;
+}
+
+#footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.1);
+}
+
+#footerContent {
+	padding: 10px;
+}
+
+
+
+#headerTable {
+	border-collapse: collapse;
+	text-align: center;
+}
+
+#title {
+	font-size: 30px;
+	/*width: 420px;*/
+}
+
+.logo {
+	height: 60px;
+	width: 60px;
+	vertical-align: middle;
+}
+
+#separator {
+	width: 40px;
+}
+
+.menuItem {
+	cursor: pointer;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.menuItem div {
+	border-top: 2px solid rgba(0,0,0,0);
+	border-bottom: 2px solid rgba(0,0,0,0);
+	/*border: 1px solid black;*/
+}
+
+.menuItem.selected div {
+	border-bottom: 2px solid black;
+}
+
+.menuItem:hover {
+	color: rgba(37,113,255,0.8);
+}
+
+.paragraph {
+	line-height: 200%;
+}
+
+#content * {
+	font-family: Calibri;
+}
+
+.characteristicsList li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.contactUs textarea {
+	width: 400px;*/
+}
+
+.contactUs input, .contactUs textarea {
+	font-size: 15px;
+}
+
+.contactUsInput {
+	margin-bottom: 10px;
+}
+
+.bottom {
+	position: fixed;
+	bottom: 0px;
+}
+
+
+.honeycombImages {
+	z-index: -1;
+	position: relative;
+}
+
+.fadeIn {
+	animation: fadein 2s;
+}
+
+.fadeInFast {
+	animation: fadein 500ms;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.fadeOutFast {
+	animation: fadeout 500ms;
+}
+
+@keyframes fadeout {
+	from {opacity: 1;}
+	to {opacity: 0;}
+}
+
+.honeycombImageHex {
+	cursor: pointer;
+}
+
+.honeycombImageHex:hover {
+	fill-opacity: 0.2;
+}
+
+.homeImagePopup {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.2);
+	z-index: 1000;
+}
+
+.homeImagePopupContent {
+	/*width: 90%;*/
+	height: 90%;
+
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 10px;
+
+	margin: 0 auto;
+
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+
+
+

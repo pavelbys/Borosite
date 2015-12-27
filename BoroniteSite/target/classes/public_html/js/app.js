@@ -47,7 +47,7 @@ Boronite.app.directive('bnHome', function() {
 		restrict: 'C',
 		templateUrl: 'home.html',
 		link: function(scope, element) {
-			scope.test = 'it worked!';
+			scope.test = '';
 
 			scope.makeHexagons = function(width, center, numx, numy) {
 				var ht = width * 0.87; //approx sqrt(3)
@@ -114,7 +114,7 @@ Boronite.app.directive('bnHome', function() {
 					offsety = 0,
 					totalWidth = 3 * width * numx;
 
-				var offsetFix = 1.1;
+				var offsetFix = 1.7;
 
 				for (i = 0; i < numy; i++) {
 					//horizontal path 1
@@ -282,9 +282,12 @@ Boronite.app.directive('bnHome', function() {
 				// numy /= scope.scale;
 				// scope.makeHexagons(startWidth, center, numx, numy);
 				scope.makeHoneycombDashedLines(startWidth, numx, numy);
-				console.log('done making');
 				scope.$digest();
 			}, 0);
+
+			var maxScale = 20;
+
+			scope.showImages = false;
 
 			function updateTransform() {
 
@@ -292,8 +295,10 @@ Boronite.app.directive('bnHome', function() {
 					scope.scale = 1;
 				}
 
-				if (scope.scale > 20) {
-					scope.scale = 20;
+				if (scope.scale >= maxScale) {
+					scope.scale = maxScale;
+					scope.showImages = true;
+					clearInterval(zoomInterval);
 				}
 
 				var s = scope.scale;
@@ -308,75 +313,116 @@ Boronite.app.directive('bnHome', function() {
 			updateTransform();
 
 
-			svg.on('mousewheel', function(event) {
-				if (event.shiftKey) {
-					event.preventDefault();
-					var dy = event.originalEvent.wheelDeltaY;
 
-					scope.scale += dy / 1000;
-
-					updateTransform();
-
-					// if (Math.abs(scope.scale - prevScale) > 0.2) {
-					// 	prevScale = scope.scale;
-
-					// 	var width = startWidth * scope.scale;
-
-					// 	var svgWidth = svg[0].offsetWidth;
-					// 	var svgHeight = svg[0].offsetHeight;
-
-					// 	var numx = svgWidth / width;
-					// 	var numy = svgHeight / width;
-
-					// 	// scope.honeycomb = scope.makeHoneycomb(startWidth, numx, numy);
-					// 	// scope.honeycombLines = scope.makeHoneycombLines(startWidth, numx, numy);
-
-					// 	// console.log(numx, numy, svgHeight);
-					// }
-
-					// scope.honeycomb = scope.makeHoneycomb(scale, 40, 21);
-					scope.$digest();
-
+			var zoomInterval = setInterval(function() {
+				var dif = maxScale - scope.scale;
+				var change = dif / 120;
+				if (change < 0.15) {
+					change = 0.15;
 				}
+				scope.scale += change;
 
+				updateTransform();
+				scope.$digest();
+			}, 15);
+
+
+
+			scope.imgWidth = 204.8 * 0.75;
+			scope.imgHeight = 166.4 * 0.75;
+
+			var edgeWidth = 70;
+
+
+			function makeHexPath(edgeWidth, start) {
+				var path = new svgUtils.Path();
+				path.moveTo(start.x, start.y)
+					.addLine(edgeWidth, 0)
+					.addLine(edgeWidth, -Math.PI / 3)
+					.addLine(edgeWidth, -Math.PI * 2 / 3)
+					.addLine(edgeWidth, -Math.PI)
+					.addLine(edgeWidth, -Math.PI * 4 / 3)
+					.addLine(edgeWidth, -Math.PI * 5 / 3)
+					.closePath();
+				return path;
+			}
+
+
+			function makeHex(url, pos) {
+				return {
+					url: url,
+					pos: pos.copy(),
+					path: makeHexPath(edgeWidth, pos)
+				};
+			}
+
+			scope.imgHexes = [];
+			var imgPos = new svgUtils.Point(0, 23);
+
+			imgPos.move(275, 0);
+			scope.imgHexes.push(makeHex('images/img1.png', imgPos));
+
+			imgPos.move(216, 0);
+			scope.imgHexes.push(makeHex('images/img2.png', imgPos));
+
+			imgPos.move(216, 0);
+			scope.imgHexes.push(makeHex('images/img3.png', imgPos));
+
+			imgPos.move(216, 0);
+			scope.imgHexes.push(makeHex('images/img4.png', imgPos));
+
+
+			scope.maskHexes = [];
+			var maskPos = new svgUtils.Point(0, -40);
+			var maskPos2;
+
+			maskPos.move(170, 0);
+			scope.maskHexes.push(makeHexPath(edgeWidth, maskPos));
+
+			maskPos2 = maskPos.copy().move(0, 125);
+			scope.maskHexes.push(makeHexPath(edgeWidth, maskPos2));
+
+			scope.imgHexes.forEach(function() {
+				maskPos.move(215.5, 0);
+				scope.maskHexes.push(makeHexPath(edgeWidth, maskPos));
+
+				maskPos2 = maskPos.copy().move(0, 125);
+				scope.maskHexes.push(makeHexPath(edgeWidth, maskPos2));
 			});
 
-			var scaleChange = 0.003 * 2;
-			// setInterval(function() {
-			// 	// console.log(scope.scale);
-			// 	scope.scale += scaleChange;
 
-			// 	if (scope.scale < 0.4) {
-			// 		scope.scale = 0.4;
-			// 		scaleChange = -scaleChange;
+			var deselectImage = function() {
+				element.find('.homeImagePopup').addClass('fadeOutFast');
+				document.removeEventListener('click', deselectImage);
+
+				setTimeout(function() {
+					scope.selectedImage = '';
+					scope.$digest();
+				}, 480);
+			};
+
+			scope.clickedHex = function(hex) {
+				scope.selectedImage = hex.url;
+				setTimeout(function() {
+					document.addEventListener('click', deselectImage);
+				});
+			};
+
+			// svg.on('mousewheel', function(event) {
+			// 	if (event.shiftKey) {
+			// 		event.preventDefault();
+			// 		var dy = event.originalEvent.wheelDeltaY;
+
+			// 		scope.scale += dy / 1000;
+
+			// 		updateTransform();
+
+			// 		scope.$digest();
+
 			// 	}
 
-			// 	if (scope.scale > 5) {
-			// 		scope.scale = 5;
-			// 		scaleChange = -scaleChange;
-			// 	}
+			// });
 
-			// 	if (Math.abs(scope.scale - prevScale) > 0.2) {
-			// 		prevScale = scope.scale;
-
-			// 		var width = startWidth * scope.scale;
-
-			// 		var svgWidth = svg[0].offsetWidth;
-			// 		var svgHeight = svg[0].offsetHeight;
-
-			// 		var numx = svgWidth / width;
-			// 		var numy = 2 * svgHeight / width;
-
-
-			// 		// scope.honeycomb = scope.makeHoneycomb(startWidth, numx, numy);
-			// 		// scope.honeycombLines = scope.makeHoneycombLines(startWidth, numx, numy);
-			// 		// console.log(numx, numy);
-			// 		// console.log(numx, numy, svgHeight);
-			// 	}
-
-			// 	// scope.honeycomb = scope.makeHoneycomb(scale, 40, 21);
-			// 	scope.$digest();
-			// }, 10);
 
 
 		}

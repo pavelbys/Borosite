@@ -1,0 +1,17 @@
+<div id="header">
+    <table id="headerTable">
+        <tr>
+            <td>
+                <img src="images/logo_final_only_300dpi.svg" class="logo"/>
+            </td>
+            <td id="title" class="bnRed"> Boronite</td>
+            <td id="separator"></td>
+            <td class="menuItem" ng-repeat="menuItem in menuItems" ng-click="menuItem.click()"
+                ng-class="{selected: menuItem.isSelected()}" title="{{menuItem.text}}">
+                <div>
+                    {{menuItem.name}}
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
