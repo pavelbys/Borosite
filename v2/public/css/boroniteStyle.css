@@ -106,10 +106,6 @@ body {
 	line-height: 200%;
 }
 
-#content * {
-	font-family: Calibri;
-}
-
 .characteristicsList li {
 	margin-top: 10px;
 	margin-bottom: 10px;
