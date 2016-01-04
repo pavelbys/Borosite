@@ -39,7 +39,8 @@ body {
 }
 
 #header {
-	background-color: #D3D3D3;
+	/*background-color: #D3D3D3;*/
+	background: linear-gradient(to right, rgba(255,0,0,0),rgba(255,0,0,0.0),rgba(255,0,0,0.1),rgba(255,0,0,0.5),rgba(255,0,0,1));
 	padding: 8px;
 }
 
@@ -76,10 +77,28 @@ body {
 	height: 60px;
 	width: 60px;
 	vertical-align: middle;
+	display: block;
+	padding-right: 50px;
+	max-width: 600px;
+	width: 50%;
+	height: 30%;
+	margin: auto;
+}
+
+.logoHeader {
+	height: 60px;
+	width: 60px;
+	vertical-align: middle;
+	display: block;
+	padding-left: 300px;
+	max-width: 200px;
+	width: 70%;
+	height: 50%;
+	margin: auto;
 }
 
 #separator {
-	width: 40px;
+	width: 10px;
 }
 
 .menuItem {
@@ -99,17 +118,24 @@ body {
 }
 
 .menuItem:hover {
-	color: rgba(37,113,255,0.8);
+	color: rgba(255,255,255,0.8);
 }
 
 .paragraph {
-	line-height: 200%;
+	line-height: 170%;
+	max-width: 700px;
+	width: 80%;
+	margin: auto;
 }
 
-.characteristicsList li {
+.characteristicsList {
+	margin: auto;
+}
+
+/*.characteristicsList li {
 	margin-top: 10px;
 	margin-bottom: 10px;
-}
+}*/
 
 .contactUs textarea {
 	width: 400px;*/
