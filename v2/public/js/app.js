@@ -24,6 +24,8 @@ BoroniteApp.config(['$routeProvider', function($routeProvider) {
 
 }]);
 
+
+
 BoroniteApp.controller('RedirectCtrl', function($location) {
 	$location.path('/home');
 });
