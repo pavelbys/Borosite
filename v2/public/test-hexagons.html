@@ -28,13 +28,17 @@
 		
 		var totalHalfWidth = Math.ceil(cX/radius)*radius;
 
+		var horTriangles = Math.ceil(cX/radius - 1);
+		var halfCols = Math.ceil(horTriangles/1.5);
+		var left = cX-radius*horTriangles;
+		if ( horTriangles%3 != 0 ) left -= radius/2;
 
 		return {
 			columns: numColumns,
 			rows: numRows,
 			topLeft: {
 				x: cX - totalHalfWidth,
-				y: cY - numRows*vertRadius
+				y: left
 			}
 		};
 	}
