@@ -4,7 +4,7 @@ BoroniteApp.directive('brHeader', ['$location', function($location) {
 		scope: {
 			selectedMenuItem: '=selected'
 		},
-		templateUrl: 'js/directives/templates/header.html',
+		templateUrl: 'templates/header.html',
 		link: function(scope) {
 			console.log('hello from header');
 

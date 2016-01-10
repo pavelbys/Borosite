@@ -1,0 +1,11 @@
+<div id="header">
+    <div class="centered">
+        <img src="images/header-logo.png" class="headerLogo"/>
+        <ul id="mainMenu">
+            <li class="menuItem" ng-repeat="menuItem in menuItems" ng-click="menuItem.click()"
+                ng-class="{selected: menuItem.isSelected()}" title="{{menuItem.text}}">
+                {{menuItem.name}}
+            </li>
+        </ul>
+    </div>
+</div>

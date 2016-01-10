@@ -52,7 +52,7 @@ HexagonGrid.prototype.drawHexGrid = function (rows, cols, originX, originY, isDe
 };
 
 HexagonGrid.prototype.drawHexAtColRow = function(column, row, color) {
-    var drawy = column % 2 == 0 ? (row * this.height) + this.canvasOriginY : (row * this.height) + this.canvasOriginY + (this.height / 2);
+    var drawy = column % 2 === 0 ? (row * this.height) + this.canvasOriginY : (row * this.height) + this.canvasOriginY + (this.height / 2);
     var drawx = (column * this.side) + this.canvasOriginX;
 
     this.drawHex(drawx, drawy, color, "");

@@ -176,6 +176,10 @@ input[type=submit]:active, button:active {
 	right: 0px;
 }
 
+input[type=submit]:disabled {
+	background-color: #CCC;
+}
+
 .bottom {
 	position: fixed;
 	bottom: 0px;

@@ -2,11 +2,11 @@
 
     <iframe class="googleMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5886.008540908612!2d-71.21650259081149!3d42.47019785948172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e39e148d0a9249%3A0x2842971d3cafe8a3!2s11+Cypress+Dr%2C+Burlington%2C+MA+01803!5e0!3m2!1sen!2sus!4v1452389098889" width="350" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-    <form novalidate>
+    <form novalidate name="form">
 
         <div class="contactUsInput">
             <label>Name</label>
-            <input type="text" ng-model="form.name" placeholder="Full name" required="required"/>
+            <input required type="text" ng-model="form.name" placeholder="Full name"/>
         </div>
         <div class="contactUsInput">
             <label>Affiliation (optional)</label>
@@ -14,22 +14,26 @@
         </div>
         <div class="contactUsInput">
             <label>Email</label>
-            <input type="email" placeholder="Email address" ng-model="form.email" required="required"/>
+            <input required type="email" placeholder="Email address" ng-model="form.email"/>
         </div>
         <div class="contactUsInput">
             <label>Phone Number</label>
-            <input type="text" placeholder="Phone number" ng-model="form.phoneNumber" required="required"/>
+            <input required type="text" placeholder="Phone number" ng-model="form.phoneNumber"
+                ng-pattern="/^[0-9\-\(\)\.]{10,}$/"/>
+                <!-- ng-pattern="/^[0-9\-\(\)]{10,}$/"/ -->
         </div>
 
         <label>Message</label>
-        <textarea ng-model="form.message" placeholder="Enter your message here..." required="required"></textarea>
+        <textarea required ng-model="form.message" placeholder="Enter your message here..."></textarea>
         <br><br>
+        <hidden id="myRecaptcha"></hidden>
+        <!-- <div class="g-recaptcha" data-sitekey="6LfM6xQTAAAAAJRd4Ne72ny29AwzWLe40JGqSdQ8"></div> -->
 
-        <div style="border: 1px solid black; display: inline-block">
-            test to check for robots will go here
-        </div>
         <br>
-        <input type="submit" value="SUBMIT" ng-click=""/> <!-- todo -->
+        <input type="submit" value="SUBMIT" ng-disabled="form.$invalid" ng-click="submit()"/> <!-- todo -->
+
+
+
     </form>
 
 </div>
