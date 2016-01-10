@@ -46,12 +46,12 @@
 
 	console.log(getHexSettings(800, 300, 50));
 
-	var r = 10;
+	var r = 7;
 	var hexagonGrid = new HexagonGrid("HexCanvas", r);
 	var canvas = document.getElementById("HexCanvas");
 	var ctx = canvas.getContext("2d");
 	var hexInt = setInterval(function() {
-		if (r < 55) {
+		if (r < 80) {
 			// console.log(canvas.width, canvas.height);
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -60,7 +60,7 @@
 			hexagonGrid.drawHexGrid(hexSettings.rows, hexSettings.columns, hexSettings.topLeft.x, hexSettings.topLeft.y);
 			// hexagonGrid.drawHexGrid(hexSettings.rows, 50, 0, hexSettings.topLeft.y, true);
 
-			r *= 1.025;
+			r *= 1.015;
 		} else {
 			clearInterval(hexInt);
 		}
