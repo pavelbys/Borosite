@@ -13,28 +13,33 @@
 	// var hexagonGrid = new HexagonGrid("HexCanvas", 40);
 	// hexagonGrid.drawHexGrid(10, 20, -50, -50, false);
 
-	var sin60 = Math.sqrt(3)/2;
-	function getHexSettings (width, height, radius) {
-		var cX = width/2, cY = height/2;
+	var sin60 = Math.sqrt(3) / 2;
 
-		var halfXRadii = Math.ceil(cX/radius) - 1;
-		var halfNumCols = Math.floor(halfXRadii/1.5);
-		var numColumns = halfNumCols*2 + 1;
+	function getHexSettings(width, height, radius) {
+		var cX = width / 2,
+			cY = height / 2;
 
-		var vertRadius = sin60*radius;
-		var halfYRadii = cY/vertRadius - 1;
-		var halfRows = Math.ceil(halfYRadii/2);
-		var numRows = halfRows*2 + 1;
-		
-		var totalHalfWidth = Math.ceil(cX/radius)*radius;
+		var avgRadius = radius * 1.5;
 
+		var halfNumCols = Math.ceil(cX / avgRadius);
+		if (halfNumCols % 2 !== 0) {
+			halfNumCols++;
+		}
+
+		var numColumns = halfNumCols * 2 + 1;
+		var totalWidth = (halfNumCols * avgRadius + radius) * 2;
+
+		var vertRadius = sin60 * radius;
+		var halfYRadii = cY / vertRadius - 1;
+		var halfRows = Math.ceil(halfYRadii / 2);
+		var numRows = halfRows * 2 + 1;
 
 		return {
 			columns: numColumns,
 			rows: numRows,
 			topLeft: {
-				x: cX - totalHalfWidth,
-				y: cY - numRows*vertRadius
+				x: cX - totalWidth / 2,
+				y: cY - numRows * vertRadius
 			}
 		};
 	}
@@ -46,16 +51,16 @@
 	var canvas = document.getElementById("HexCanvas");
 	var ctx = canvas.getContext("2d");
 	var hexInt = setInterval(function() {
-		if (r < 50) {
+		if (r < 55) {
 			// console.log(canvas.width, canvas.height);
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 			var hexSettings = getHexSettings(canvas.width, canvas.height, r);
 			hexagonGrid.setRadius(r);
-			hexagonGrid.drawHexGrid(hexSettings.rows, hexSettings.columns, hexSettings.topLeft.x, hexSettings.topLeft.y, true);
+			hexagonGrid.drawHexGrid(hexSettings.rows, hexSettings.columns, hexSettings.topLeft.x, hexSettings.topLeft.y);
 			// hexagonGrid.drawHexGrid(hexSettings.rows, 50, 0, hexSettings.topLeft.y, true);
 
-			r *= 1.0050;
+			r *= 1.025;
 		} else {
 			clearInterval(hexInt);
 		}
