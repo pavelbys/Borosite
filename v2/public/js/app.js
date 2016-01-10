@@ -1,21 +1,71 @@
+if (!window.templates) {
+	angular.module('templates', []);
+}
+
 var BoroniteApp = angular.module('BoroniteApp', ['ngRoute']);
+
+// BoroniteApp.factory('menuItems', ['$location', function($location) {
+// 	function MenuItem(name, path) {
+// 		this.name = name;
+// 		this.path = path;
+// 	}
+
+// 	MenuItem.prototype.isSelected = function() {
+// 		return this.path === $location.path();
+// 	};
+// 	MenuItem.prototype.click = function() {
+// 		$location.path(this.path);
+// 	};
+
+// 	var menuItems = [
+// 		new MenuItem('Home', '/home'),
+// 		new MenuItem('About', '/about'),
+// 		new MenuItem('Contact Us', '/contact')
+// 	];
+
+// 	return menuItems;
+// }]);
+
+(function() {
+
+	function MenuItem(name, path) {
+		this.name = name;
+		this.path = path;
+	}
+
+	var menuItems = [
+		new MenuItem('Home', '/home'),
+		new MenuItem('About', '/about'),
+		new MenuItem('Contact Us', '/contact'),
+		new MenuItem('Careers', '/careers')
+	];
+
+	BoroniteApp.value('menuItems', menuItems);
+
+	BoroniteApp.menuItems = menuItems;
+
+}());
 
 /**
  * Configure the Routes
  */
 BoroniteApp.config(['$routeProvider', function($routeProvider) {
-	var pages = ['home', 'about', 'contact'];
+	// var pages = ['home', 'about', 'contact'];
 
-	function addRoute(page) {
-		var url = 'partials/' + page + '.html';
+	var menuItems = BoroniteApp.menuItems;
+
+	function addRoute(menuItem) {
+		var path = menuItem.path;
+		var name = path.substring(1);
+		var url = 'partials' + path + '.html';
 		console.log(url);
-		$routeProvider.when('/' + page, {
-			templateUrl: 'partials/' + page + '.html',
-			controller: page + 'Ctrl'
+		$routeProvider.when(path, {
+			templateUrl: 'partials' + path + '.html',
+			controller: name + 'Ctrl'
 		});
 	}
 
-	pages.forEach(addRoute);
+	menuItems.forEach(addRoute);
 
 	$routeProvider.when('/', {
 		templateUrl: 'partials/home.html',
@@ -25,10 +75,6 @@ BoroniteApp.config(['$routeProvider', function($routeProvider) {
 }]);
 
 
-
-BoroniteApp.controller('RedirectCtrl', function($location) {
-	$location.path('/home');
-});
 
 BoroniteApp.controller('homeCtrl', [function() {
 
