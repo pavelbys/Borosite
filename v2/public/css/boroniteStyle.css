@@ -5,17 +5,6 @@
 	fill: #ee3337;
 }
 
-
-.test {
-	background-image: url('../images/unnamed.jpg');
-
-	width: 500px;
-	height: 500px;
-
-	color: white;
-	text-align: center;
-}
-
 html {
 	height: 100%;
 }
@@ -70,6 +59,10 @@ body {
 	float: left;
 }
 
+img {
+	max-width: 90%;
+}
+
 .logo {
 	display: block;
 	margin: auto;
@@ -97,10 +90,12 @@ body {
 	color: white;
 	float: left;
 	list-style: none;
+	margin-top: 18px;
+	margin-bottom: 12px;
 }
 
 #mainMenu li {
-	float: left;
+	display: inline-block;
 
 	cursor: pointer;
 	margin-left: 15px;
@@ -151,6 +146,33 @@ textarea {
 textarea {
 	width: 400px;
 	height: 100px;
+}
+
+@media (max-width: 500px) {
+	input[type=text],
+	input[type=email],
+	textarea {
+		width: 90%;
+	}
+
+	.headerLogo {
+		float: none;
+		display: block;
+		margin: auto;
+	}
+
+	#mainMenu {
+		display: table;
+		margin: auto;
+		float: none;
+		padding: 0px;
+	}
+}
+
+@media (max-width: 750px) {
+	.googleMap {
+		display: none;
+	}
 }
 
 input[type=submit], button {
