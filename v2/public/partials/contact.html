@@ -1,10 +1,10 @@
 <div class="centered">
 
-    <form novalidate>
+    <form novalidate name="form">
 
         <div class="contactUsInput">
             <label>Name</label>
-            <input type="text" ng-model="form.name" placeholder="Full name" required="required"/>
+            <input required type="text" ng-model="form.name" placeholder="Full name"/>
         </div>
         <div class="contactUsInput">
             <label>Affiliation (optional)</label>
@@ -12,22 +12,26 @@
         </div>
         <div class="contactUsInput">
             <label>Email</label>
-            <input type="email" placeholder="Email address" ng-model="form.email" required="required"/>
+            <input required type="email" placeholder="Email address" ng-model="form.email"/>
         </div>
         <div class="contactUsInput">
             <label>Phone Number</label>
-            <input type="text" placeholder="Phone number" ng-model="form.phoneNumber" required="required"/>
+            <input required type="text" placeholder="Phone number" ng-model="form.phoneNumber"
+                ng-pattern="/^[0-9\-\(\)\.]{10,}$/"/>
+                <!-- ng-pattern="/^[0-9\-\(\)]{10,}$/"/ -->
         </div>
 
         <label>Message</label>
-        <textarea ng-model="form.message" placeholder="Enter your message here..." required="required"></textarea>
+        <textarea required ng-model="form.message" placeholder="Enter your message here..."></textarea>
         <br><br>
+        <hidden id="myRecaptcha"></hidden>
+        <!-- <div class="g-recaptcha" data-sitekey="6LfM6xQTAAAAAJRd4Ne72ny29AwzWLe40JGqSdQ8"></div> -->
 
-        <div style="border: 1px solid black; display: inline-block">
-            test to check for robots will go here
-        </div>
         <br>
-        <input type="submit" value="SUBMIT" ng-click=""/> <!-- todo -->
+        <input type="submit" value="SUBMIT" ng-disabled="form.$invalid" ng-click="submit()"/> <!-- todo -->
+
+
+
     </form>
 
 </div>
