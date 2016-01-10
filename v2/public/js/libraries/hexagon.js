@@ -10,7 +10,7 @@ function HexagonGrid(canvasId, radius) {
     this.canvasOriginY = 0;
     
     this.canvas.addEventListener("mousedown", this.clickEvent.bind(this), false);
-};
+}
 
 HexagonGrid.prototype.setRadius = function (radius) {
     this.radius = radius;
@@ -91,11 +91,11 @@ HexagonGrid.prototype.getRelativeCanvasOffset = function() {
         do {
             x += layoutElement.offsetLeft;
             y += layoutElement.offsetTop;
-        } while (layoutElement = layoutElement.offsetParent);
+        } while ((layoutElement = layoutElement.offsetParent));
         
         return { x: x, y: y };
     }
-}
+};
 
 //Uses a grid overlay algorithm to determine hexagon location
 //Left edge of grid has a test to acuratly determin correct hex
@@ -108,8 +108,7 @@ HexagonGrid.prototype.getSelectedTile = function(mouseX, mouseY) {
 
     var column = Math.floor((mouseX) / this.side);
     var row = Math.floor(
-        column % 2 == 0
-            ? Math.floor((mouseY) / this.height)
+        column % 2 === 0 ? Math.floor((mouseY) / this.height)
             : Math.floor(((mouseY + (this.height * 0.5)) / this.height)) - 1);
 
 
@@ -119,48 +118,47 @@ HexagonGrid.prototype.getSelectedTile = function(mouseX, mouseY) {
 
         //Now test which of the two triangles we are in 
         //Top left triangle points
-        var p1 = new Object();
+        var p1 = {};
         p1.x = column * this.side;
-        p1.y = column % 2 == 0
-            ? row * this.height
+        p1.y = column % 2 === 0 ? row * this.height
             : (row * this.height) + (this.height / 2);
 
-        var p2 = new Object();
+        var p2 = {};
         p2.x = p1.x;
         p2.y = p1.y + (this.height / 2);
 
-        var p3 = new Object();
+        var p3 = {};
         p3.x = p1.x + this.width - this.side;
         p3.y = p1.y;
 
-        var mousePoint = new Object();
+        var mousePoint = {};
         mousePoint.x = mouseX;
         mousePoint.y = mouseY;
 
         if (this.isPointInTriangle(mousePoint, p1, p2, p3)) {
             column--;
 
-            if (column % 2 != 0) {
+            if (column % 2 !== 0) {
                 row--;
             }
         }
 
         //Bottom left triangle points
-        var p4 = new Object();
+        var p4 = {};
         p4 = p2;
 
-        var p5 = new Object();
+        var p5 = {};
         p5.x = p4.x;
         p5.y = p4.y + (this.height / 2);
 
-        var p6 = new Object();
+        var p6 = {};
         p6.x = p5.x + (this.width - this.side);
         p6.y = p5.y;
 
         if (this.isPointInTriangle(mousePoint, p4, p5, p6)) {
             column--;
 
-            if (column % 2 == 0) {
+            if (column % 2 === 0) {
                 row++;
             }
         }
@@ -194,7 +192,7 @@ HexagonGrid.prototype.clickEvent = function (e) {
 
     var tile = this.getSelectedTile(localX, localY);
     if (tile.column >= 0 && tile.row >= 0) {
-        var drawy = tile.column % 2 == 0 ? (tile.row * this.height) + this.canvasOriginY + 6 : (tile.row * this.height) + this.canvasOriginY + 6 + (this.height / 2);
+        var drawy = tile.column % 2 === 0 ? (tile.row * this.height) + this.canvasOriginY + 6 : (tile.row * this.height) + this.canvasOriginY + 6 + (this.height / 2);
         var drawx = (tile.column * this.side) + this.canvasOriginX;
 
         this.drawHex(drawx, drawy - 6, "rgba(110,110,70,0.3)", "");
