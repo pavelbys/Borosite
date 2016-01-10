@@ -1,32 +1,33 @@
-<div class="contactUs">
+<div class="centered">
+
     <form novalidate>
 
         <div class="contactUsInput">
-            Name:<br>
-            <input type="text" ng-model="form.name" required="required"/>
+            <label>Name</label>
+            <input type="text" ng-model="form.name" placeholder="Full name" required="required"/>
         </div>
         <div class="contactUsInput">
-            Affiliation (optional):<br>
-            <input type="text" ng-model="form.company"/>
+            <label>Affiliation (optional)</label>
+            <input type="text" placeholder="Company, organization..." ng-model="form.company"/>
         </div>
         <div class="contactUsInput">
-            Email:<br>
-            <input type="email" ng-model="form.email" required="required"/>
+            <label>Email</label>
+            <input type="email" placeholder="Email address" ng-model="form.email" required="required"/>
         </div>
         <div class="contactUsInput">
-            Phone Number:<br>
-            <input type="text" ng-model="form.phoneNumber" required="required"/>
+            <label>Phone Number</label>
+            <input type="text" placeholder="Phone number" ng-model="form.phoneNumber" required="required"/>
         </div>
 
-        Message:<br>
-        <textarea ng-model="form.message" required="required"></textarea>
+        <label>Message</label>
+        <textarea ng-model="form.message" placeholder="Enter your message here..." required="required"></textarea>
         <br><br>
 
         <div style="border: 1px solid black; display: inline-block">
             test to check for robots will go here
         </div>
         <br>
-        <input type="submit" ng-click=""/> <!-- todo -->
+        <input type="submit" value="SUBMIT" ng-click=""/> <!-- todo -->
     </form>
 
 </div>
