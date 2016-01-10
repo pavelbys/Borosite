@@ -1,9 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var compression = require('compression');
 
 var app = express();
-
-app.use(bodyParser.json());
 
 app.use(express.static('./public'));
 
@@ -13,6 +12,21 @@ var server = app.listen(3000, function() {
 
 	console.log('Example app listening at http://%s:%s', host, port);
 });
+
+var dist_app = express();
+
+dist_app.use(compression());
+dist_app.use(bodyParser.json());
+
+dist_app.use(express.static('./dist'));
+
+var server = dist_app.listen(5000, function() {
+	var host = server.address().address;
+	var port = server.address().port;
+
+	console.log('Example app listening at http://%s:%s', host, port);
+});
+
 
 app.post('/contact', function(request, response) {
 	console.log(request.body);

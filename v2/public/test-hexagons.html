@@ -9,6 +9,8 @@
 
 	<canvas id="HexCanvas" width="800" height="300"></canvas>
 
+	<img src="images/img1.png" id="testImg" width="10px" />
+
 	<script>
 	// var hexagonGrid = new HexagonGrid("HexCanvas", 40);
 	// hexagonGrid.drawHexGrid(10, 20, -50, -50, false);
@@ -63,9 +65,11 @@
 			r *= 1.015;
 		} else {
 			clearInterval(hexInt);
+			hexagonGrid.drawHexAtColRow(3, 1, null, document.getElementById('testImg'));
+
 		}
 	}, 17);
 	</script>
 
 </body>
-</html1
+</html>
