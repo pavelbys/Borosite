@@ -1,1 +1,1 @@
-web: node v2/app.js
+web: node app.js
