@@ -76,7 +76,6 @@ HexagonGrid.prototype.drawHex = function(x0, y0, fillColor, debugText, img) {
     this.context.closePath();
 
     if (img) {
-        console.log(x0, y0, img);
         this.context.save();
         this.context.clip();
         this.context.drawImage(img, 0, 0);
@@ -206,10 +205,14 @@ HexagonGrid.prototype.clickEvent = function(e) {
     var localY = mouseY - this.canvasOriginY;
 
     var tile = this.getSelectedTile(localX, localY);
-    if (tile.column >= 0 && tile.row >= 0) {
-        var drawy = tile.column % 2 === 0 ? (tile.row * this.height) + this.canvasOriginY + 6 : (tile.row * this.height) + this.canvasOriginY + 6 + (this.height / 2);
-        var drawx = (tile.column * this.side) + this.canvasOriginX;
 
-        this.drawHex(drawx, drawy - 6, "rgba(110,110,70,0.3)", "");
+
+    if (tile.column >= 0 && tile.row >= 0) {
+        openPhotoSwipe(tile.column, tile.row);
+
+        // var drawy = tile.column % 2 === 0 ? (tile.row * this.height) + this.canvasOriginY + 6 : (tile.row * this.height) + this.canvasOriginY + 6 + (this.height / 2);
+        // var drawx = (tile.column * this.side) + this.canvasOriginX;
+
+        // this.drawHex(drawx, drawy - 6, "rgba(110,110,70,0.3)", "");
     }
 };
