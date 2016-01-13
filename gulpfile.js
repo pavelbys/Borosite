@@ -8,6 +8,7 @@ var minifyCss = require('gulp-minify-css');
 var htmlmin = require('gulp-htmlmin');
 var templateCache = require('gulp-angular-templatecache');
 var rename = require('gulp-rename');
+var nodemon = require('nodemon');
 
 // Create a javascript file with all templates and partials
 // loaded in $templateCache for use by angular
@@ -68,7 +69,19 @@ gulp.task('run-server', function () {
 	});
 });
 
+// Build production site
+gulp.task('build-dist', function () {
+	gulp.start('minify-js', 'minify-css', 'minify-html', 'copy-files', 'angular-cache', 'angular-concat-cache');
+});
+
 // Default task runs all the above tasks
 gulp.task('default', function() {
-	gulp.run('minify-js', 'minify-css', 'minify-html', 'copy-files', 'angular-cache', 'angular-concat-cache');
+	// Build site on start
+	gulp.start('build-dist');
+	// Watch for changes to build site
+	gulp.watch('public/**/*', function () {
+		gulp.start('build-dist');
+	});
+	// Fire up the server
+	gulp.start('run-server');
 });
