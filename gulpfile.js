@@ -59,6 +59,15 @@ gulp.task('copy-files', function () {
 	gulp.src('public/js/libraries/*.js').pipe(gulp.dest('dist/js/libraries/'));
 });
 
+// Run nodejs server
+gulp.task('run-server', function () {
+	nodemon({
+		script: 'app.js',
+		ext: 'js',
+		env: { 'NODE_ENV': 'development' }
+	});
+});
+
 // Default task runs all the above tasks
 gulp.task('default', function() {
 	gulp.run('minify-js', 'minify-css', 'minify-html', 'copy-files', 'angular-cache', 'angular-concat-cache');

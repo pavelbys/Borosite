@@ -1,10 +1,18 @@
 {
   "name": "boronite-site",
   "title": "Boronite Site",
-  "description": "JavaScript library for DOM operations",
+  "description": "Boronite site nodejs dependencies",
   "dependencies": {
     "body-parser": "^1.14.2",
     "compression": "^1.6.0",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-angular-templatecache": "^1.8.0",
+    "gulp-changed": "^1.3.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-minify-css": "^1.2.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.1"
   }
 }
