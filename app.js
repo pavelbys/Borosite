@@ -28,9 +28,9 @@ var server = dist_app.listen((process.env.PORT || 5000), function() {
 });
 
 
-app.post('/contact', function(request, response) {
+/*app.post('/contact', function(request, response) {
 	console.log(request.body);
-});
+});*/
 
 
 /* PLEASE DO NOT COPY AND PASTE THIS CODE. */
