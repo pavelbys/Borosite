@@ -2,17 +2,22 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var compression = require('compression');
 
-/*var app = express();
 
-app.use(express.static('./public'));
+// Run development server
+// without optimizations on port 3000
+var dev_app = express();
 
-var server = app.listen(3000, function() {
-	var host = server.address().address;
-	var port = server.address().port;
+dev_app.use(express.static('./public'));
 
-	console.log('Example app listening at http://%s:%s', host, port);
-});*/
+var dev_server = dev_app.listen(3000, function() {
+	var port = dev_server.address().port;
 
+	console.log('Development app running on http://localhost:%s', port);
+});
+
+
+// Run production server
+// optimized uses port 5000 locally (and the port given by heroku online)
 var dist_app = express();
 
 dist_app.use(compression());
@@ -20,11 +25,10 @@ dist_app.use(bodyParser.json());
 
 dist_app.use(express.static('./dist'));
 
-var server = dist_app.listen((process.env.PORT || 5000), function() {
-	var host = server.address().address;
-	var port = server.address().port;
+var dist_server = dist_app.listen((process.env.PORT || 5000), function() {
+	var port = dist_server.address().port;
 
-	console.log('Example app listening at http://%s:%s', host, port);
+	console.log('Production app running on http://localhost:%s', port);
 });
 
 

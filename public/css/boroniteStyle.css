@@ -16,7 +16,6 @@ body {
 	height: 100%;
 	line-height: 170%;
 	overflow-y: scroll;
-	background-color: rgba(0,0,0,0.1);
 }
 
 .bnRed {
@@ -32,6 +31,11 @@ body {
 	background-color: #ee3337;
 	/*background: linear-gradient(to right, rgba(255,0,0,0),rgba(255,0,0,0.0),rgba(255,0,0,0.1),rgba(255,0,0,0.5),rgba(255,0,0,1));*/
 	padding: 8px;
+	text-align: center;
+}
+
+#headerNav {
+	display: inline-block;
 }
 
 #content {
@@ -44,6 +48,7 @@ body {
 	color: #222;
 	font-size: 13px;
     box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.3);
+	background-color: rgba(0,0,0,0.1);
 }
 
 #footerContent {
