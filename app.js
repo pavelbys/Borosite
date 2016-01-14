@@ -5,30 +5,15 @@ var compression = require('compression');
 
 // Run development server
 // without optimizations on port 3000
-var dev_app = express();
+var app = express();
+var public_folder = (process.env.NODE_ENV == 'development') ? './public' : './dist';
 
-dev_app.use(express.static('./public'));
+app.use(express.static(public_folder));
 
-var dev_server = dev_app.listen(3000, function() {
-	var port = dev_server.address().port;
+var server = app.listen((process.env.PORT || 3000), function() {
+	var port = server.address().port;
 
 	console.log('Development app running on http://localhost:%s', port);
-});
-
-
-// Run production server
-// optimized uses port 5000 locally (and the port given by heroku online)
-var dist_app = express();
-
-dist_app.use(compression());
-dist_app.use(bodyParser.json());
-
-dist_app.use(express.static('./dist'));
-
-var dist_server = dist_app.listen((process.env.PORT || 5000), function() {
-	var port = dist_server.address().port;
-
-	console.log('Production app running on http://localhost:%s', port);
 });
 
 

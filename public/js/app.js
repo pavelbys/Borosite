@@ -83,7 +83,7 @@ BoroniteApp.controller('contactCtrl', ['$scope', '$location', '$http', function(
 
 	function renderRecaptcha() {
 		window.grecaptcha.render('myRecaptcha', {
-			sitekey: '6LfM6xQTAAAAAJRd4Ne72ny29AwzWLe40JGqSdQ8',
+			sitekey: '6LfwYhUTAAAAAOweuLNkjWY0Kzqbuqbuo9nkfqmt',
 			callback: function(res) {
 				alert(res);
 			},
