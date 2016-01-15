@@ -1,1 +1,1 @@
-web: gulp default
+web: gulp build; node web.js
