@@ -185,9 +185,7 @@ BoroniteApp.controller('homeCtrl', [function() {
 	var r = 10;
 	var hexagonGrid = new HexagonGrid("HexCanvas", r);
 	var canvas = document.getElementById("HexCanvas");
-	// var canvasContainer = document.getElementById("HexCanvasContainer");
-	// console.log(canvasContainer);
-	canvas.width = window.innerWidth * 0.99;
+	canvas.width = window.innerWidth;
 	var ctx = canvas.getContext("2d");
 	var hexInt = setInterval(function() {
 		var hexSettings = getHexSettings(canvas.width, canvas.height, r);
