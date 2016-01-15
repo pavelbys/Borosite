@@ -198,6 +198,11 @@ HexagonGrid.prototype.isPointInTriangle = function isPointInTriangle(pt, v1, v2,
 };
 
 HexagonGrid.prototype.clickEvent = function(e) {
+
+    if (e.which === 3) {
+        return;
+    }
+
     var mouseX = e.pageX;
     var mouseY = e.pageY;
 

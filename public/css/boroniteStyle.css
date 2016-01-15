@@ -17,6 +17,7 @@ body {
 	line-height: 170%;
 	overflow-y: scroll;
 	position: relative;
+	overflow-x: hidden;
 }
 
 .bnRed {
