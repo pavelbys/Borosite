@@ -80,12 +80,18 @@ BoroniteApp.controller('menuController', ['$scope', 'menuItems', '$location', fu
 }]);
 
 BoroniteApp.controller('contactCtrl', ['$scope', '$location', '$http', function($scope, $location, $http) {
+	$scope.form = {
+		recaptcha: false,
+		success: false
+	};
 
 	function renderRecaptcha() {
 		window.grecaptcha.render('myRecaptcha', {
 			sitekey: '6LfwYhUTAAAAAOweuLNkjWY0Kzqbuqbuo9nkfqmt',
 			callback: function(res) {
-				alert(res);
+				console.log(res);
+				$scope.form.recaptcha = res;
+				console.log($scope.form);
 			},
 			theme: 'dark'
 		});
@@ -98,15 +104,13 @@ BoroniteApp.controller('contactCtrl', ['$scope', '$location', '$http', function(
 	}
 
 
-
 	$scope.submit = function() {
 		console.log($scope.form);
 		$http.post('/contact', $scope.form, {}).then(function success() {
-			console.log('success');
+			$scope.form.success = true;
 		}, function error() {
 			console.log('error');
 		});
-
 	};
 
 }]);

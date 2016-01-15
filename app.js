@@ -6,6 +6,9 @@ var compression = require('compression');
 // Run development server
 // without optimizations on port 3000
 var app = express();
+app.use(compression());
+app.use(bodyParser.json());
+
 var public_folder = (process.env.NODE_ENV == 'development') ? './public' : './dist';
 
 app.use(express.static(public_folder));
@@ -17,9 +20,9 @@ var server = app.listen((process.env.PORT || 3000), function() {
 });
 
 
-/*app.post('/contact', function(request, response) {
+app.post('/contact', function(request, response) {
 	console.log(request.body);
-});*/
+});
 
 
 /* PLEASE DO NOT COPY AND PASTE THIS CODE. */
