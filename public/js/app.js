@@ -182,12 +182,12 @@ BoroniteApp.controller('homeCtrl', [function() {
 			}
 		};
 	}
-	var r = 7;
+	var r = 10;
 	var hexagonGrid = new HexagonGrid("HexCanvas", r);
 	var canvas = document.getElementById("HexCanvas");
 	// var canvasContainer = document.getElementById("HexCanvasContainer");
 	// console.log(canvasContainer);
-	canvas.width = window.innerWidth;
+	canvas.width = window.innerWidth * 0.99;
 	var ctx = canvas.getContext("2d");
 	var hexInt = setInterval(function() {
 		var hexSettings = getHexSettings(canvas.width, canvas.height, r);
@@ -200,13 +200,37 @@ BoroniteApp.controller('homeCtrl', [function() {
 			clearInterval(hexInt);
 			var middleRow = Math.floor(hexSettings.rows / 2);
 
-			for (var i = 0; i < hexSettings.columns; i += 2) {
-				hexagonGrid.drawHexAtColRow(i, middleRow, null, items[(i) / 2].myImg);
+			for (var i = 0, len = items.length; i < len; i++) {
+				if (i * 2 < hexSettings.columns) {
+					hexagonGrid.drawHexAtColRow(i * 2, middleRow, null, items[i].myImg);
+				}
 			}
+
+			// for (var i = 0; i < hexSettings.columns; i += 2) {
+			// 	hexagonGrid.drawHexAtColRow(i, middleRow, null, items[(i) / 2].myImg);
+			// }
 		}
 	}, 17);
 
+	function shuffle(array) {
+		var currentIndex = array.length,
+			temporaryValue, randomIndex;
 
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex--;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+	}
 
 	function openPhotoSwipe(col, row) {
 		var hexSettings = getHexSettings(canvas.width, canvas.height, r);
@@ -218,7 +242,7 @@ BoroniteApp.controller('homeCtrl', [function() {
 			// return;
 		}
 		if (col % 2 !== 0) {
-			col = 0;
+			col = 2;
 		}
 
 		var pswpElement = document.querySelectorAll('.pswp')[0];
@@ -229,12 +253,15 @@ BoroniteApp.controller('homeCtrl', [function() {
 			// history & focus options are disabled on CodePen
 			history: false,
 			focus: true,
-			showAnimationDuration: 1000,
+			showAnimationDuration: 0,
 			hideAnimationDuration: 0
 		};
-		var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items);
+
+		// shuffle(items);
+
+		var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
 		gallery.init();
-		gallery.goTo(col / 2);
+		gallery.goTo(col / 2 - 1);
 
 
 	}
