@@ -39,7 +39,7 @@ body {
 }
 
 #content {
-	padding: 20px;
+	/*padding: 20px;*/
 	padding-bottom: 100px;
 	background-color: white;
 }
@@ -58,6 +58,14 @@ body {
 #title {
 	font-size: 30px;
 	/*width: 420px;*/
+}
+
+#HexCanvas {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	display: block;
+	cursor: pointer;
 }
 
 .headerLogo {

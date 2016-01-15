@@ -30,7 +30,7 @@
         <!-- <div class="g-recaptcha" data-sitekey="6LfM6xQTAAAAAJRd4Ne72ny29AwzWLe40JGqSdQ8"></div> -->
 
         <br>
-        <input type="submit" value="SUBMIT" ng-disabled="form.$invalid" ng-click="submit()"/> <!-- todo -->
+        <input ng-hide="form.success" type="submit" value="SUBMIT" ng-disabled="form.$invalid || !form.recaptcha" ng-click="submit()"/> <!-- todo -->
 
 
 
