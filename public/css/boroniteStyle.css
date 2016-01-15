@@ -13,18 +13,14 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
 	margin: 0px;
-	height: 100%;
+	min-height: 100%;
 	line-height: 170%;
 	overflow-y: scroll;
+	position: relative;
 }
 
 .bnRed {
 	color: #ee3337;
-}
-
-#appDiv {
-	min-height: 100%;
-	position: relative;
 }
 
 #header {
@@ -45,6 +41,11 @@ body {
 }
 
 #footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+
 	color: #222;
 	font-size: 13px;
     box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.3);

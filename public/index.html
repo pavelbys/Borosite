@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html ng-app="BoroniteApp" class="no-js">
     <head>
         <!-- Meta-Information -->
         <title>Boronite</title>
@@ -15,40 +15,38 @@
         <base href="/#/">
     </head>
     <body>
-        <div ng-app="BoroniteApp" id="appDiv">
-            <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-            your browser</a> to improve your experience.</p>
-            <![endif]-->
-            <!-- Our Website Content Goes Here -->
-            <!-- <br-header selected="page"></br-header> -->
-            <div id="header" ng-controller="menuController">
-                <div id="headerNav">
-                    <img src="images/header-logo.png" class="headerLogo"/>
-                    <ul id="mainMenu">
-                        <li class="menuItem" ng-repeat="menuItem in menuItems"
-                            ng-class="{selected: isSelected(menuItem)}" title="{{menuItem.text}}">
-                            <a ng-click="click(menuItem)">{{menuItem.name}}</a>
-                            <!-- {{menuItem.name}} -->
-                        </li>
-                    </ul>
-                </div>
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+        your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- Our Website Content Goes Here -->
+        <!-- <br-header selected="page"></br-header> -->
+        <div id="header" ng-controller="menuController">
+            <div id="headerNav">
+                <img src="images/header-logo.png" class="headerLogo"/>
+                <ul id="mainMenu">
+                    <li class="menuItem" ng-repeat="menuItem in menuItems"
+                        ng-class="{selected: isSelected(menuItem)}" title="{{menuItem.text}}">
+                        <a ng-click="click(menuItem)">{{menuItem.name}}</a>
+                        <!-- {{menuItem.name}} -->
+                    </li>
+                </ul>
             </div>
-            <div id="content" ng-view></div>
-            
-            <footer id="footer">
-                <div class="centered" id="footerContent">
-                    Contact us: 781-750-8367
-                    <span style="float: right;">&copy; Copyright</span>
-                </div>
-            </footer>
-            
-            <!-- Vendor: Angular, followed by our custom Javascripts -->
-            <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-            <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
-            
-            <!-- Our Website Javascripts -->
-            <script src="js/app.js"></script>
         </div>
+        <div id="content" ng-view></div>
+        
+        <footer id="footer">
+            <div class="centered" id="footerContent">
+                Contact us: 781-750-8367 sdafds
+                <span style="float: right;">&copy; Copyright</span>
+            </div>
+        </footer>
+        
+        <!-- Vendor: Angular, followed by our custom Javascripts -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+        
+        <!-- Our Website Javascripts -->
+        <script src="js/app.js"></script>
     </body>
 </html>

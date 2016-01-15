@@ -61,11 +61,11 @@ gulp.task('copy-files', function () {
 });
 
 // Run nodejs server
-gulp.task('run-server', function () {
+gulp.task('run-server', ['build-dist'], function () {
 	nodemon({
 		script: 'app.js',
 		ext: 'js',
-		env: { 'NODE_ENV': 'development' }
+		env: { 'NODE_ENV': 'production' }
 	});
 });
 
@@ -78,10 +78,6 @@ gulp.task('build-dist', function () {
 gulp.task('default', function() {
 	// Build site on start
 	gulp.start('build-dist');
-	// Watch for changes to build site
-	gulp.watch('public/**/*', function () {
-		gulp.start('build-dist');
-	});
 	// Fire up the server
 	gulp.start('run-server');
 });
