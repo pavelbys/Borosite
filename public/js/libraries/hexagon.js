@@ -78,7 +78,7 @@ HexagonGrid.prototype.drawHex = function(x0, y0, fillColor, debugText, img) {
     if (img) {
         this.context.save();
         this.context.clip();
-        this.context.drawImage(img, 0, 0);
+        this.context.drawImage(img, x0, y0, 160, 180);
         this.context.restore();
 
     }

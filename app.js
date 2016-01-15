@@ -4,7 +4,8 @@ var compression = require('compression');
 var request = require('request');
 var nodemailer = require("nodemailer");
 var directTransport = require('nodemailer-direct-transport');
-var transport = nodemailer.createTransport(directTransport({
+
+/*var transport = nodemailer.createTransport(directTransport({
     name: '192.168.123.153' // should be the hostname machine IP address resolves to
 }));
 transport.sendMail({
@@ -13,7 +14,7 @@ transport.sendMail({
 	subject: "Hey, what's up?", // Subject line
 	text: "Hello world ✔", // plaintext body
 	html: "<b>Hello world ✔</b>" // html body
-}, console.error);
+}, console.error);*/
 
 // Run development server
 // without optimizations on port 3000
