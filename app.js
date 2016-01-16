@@ -46,7 +46,7 @@ app.post('/contact', function(req, res) {
 
 			transporter.sendMail({
 				from: formData.email, // sender address
-				to: process.env.EMAIL, // list of receivers
+				to: process.env.EMAILTO, // list of receivers
 				subject: "Boronite.com - " + formData.email, // Subject line
 				text: "Name: " + formData.name +
 				"\nCompany: " + formData.company +
