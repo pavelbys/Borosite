@@ -3,18 +3,7 @@ var bodyParser = require('body-parser');
 var compression = require('compression');
 var request = require('request');
 var nodemailer = require("nodemailer");
-var directTransport = require('nodemailer-direct-transport');
-
-/*var transport = nodemailer.createTransport(directTransport({
-    name: '192.168.123.153' // should be the hostname machine IP address resolves to
-}));
-transport.sendMail({
-	from: "foo@blurdybloop.com", // sender address
-	to: "kostastsakas@gmail.com", // list of receivers
-	subject: "Hey, what's up?", // Subject line
-	text: "Hello world ✔", // plaintext body
-	html: "<b>Hello world ✔</b>" // html body
-}, console.error);*/
+var smtpTransport = require('nodemailer-smtp-transport');
 
 // Run development server
 // without optimizations on port 3000
@@ -42,10 +31,34 @@ app.post('/contact', function(req, res) {
 			response: req.body.recaptcha,
 		}
 	}, function(err, httpResponse, body) {
+		var formData = req.body;
 		var verified = JSON.parse(body);
 
 		if (verified.success) {
+			var transporter = nodemailer.createTransport(smtpTransport({
+				service: 'Gmail',
+				auth: {
+					user: process.env.EMAIL,
+					pass: process.env.PASS
+				}
+			}));
 
+			transporter.sendMail({
+				from: formData.email, // sender address
+				to: process.env.EMAIL, // list of receivers
+				subject: "Boronite.com - " + formData.email, // Subject line
+				text: "Name: " + formData.name +
+				"\nCompany: " + formData.company +
+				"\nEmail: " + formData.email +
+				"\nPhone Number: " + formData.phoneNumber +
+				"\n\n" + formData.message
+			}, function(error, response) {
+				if (error) {
+					console.log(error);
+				} else {
+					console.log('Message sent');
+				}
+			});
 		}
 
 		res.json(verified);

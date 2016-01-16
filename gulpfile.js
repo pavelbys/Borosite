@@ -61,25 +61,20 @@ gulp.task('copy-files', function () {
 });
 
 // Run nodejs server
-/*gulp.task('run-server', ['build-dist'], function () {
+gulp.task('run-server', ['build'], function () {
 	nodemon({
 		script: 'app.js',
-		ext: 'js',
-		env: {
-			'NODE_ENV': 'production'
-		}
+		ext: 'js'
 	});
-});*/
+});
 
 // Build production site
 gulp.task('build', function () {
-	gulp.start('minify-js', 'minify-css', 'minify-html', 'copy-files', 'angular-cache', 'angular-concat-cache');
+	gulp.start('minify-js', 'minify-css', 'minify-html', 'copy-files', 'angular-cache');
 });
 
 // Default task runs all the above tasks
-/*gulp.task('default', function() {
-	// Build site on start
-	gulp.start('build-dist');
+gulp.task('default', function() {
 	// Fire up the server
 	gulp.start('run-server');
-});*/
+});
