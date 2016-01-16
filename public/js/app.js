@@ -128,9 +128,32 @@ BoroniteApp.controller('homeCtrl', [function() {
 
 
 	(function() {
-		var imageSources = ['img1', 'img2', 'img3', 'img4', 'img5', 'img6', 'home-logo'].map(function(src) {
-			return '../images/' + src + '.png';
-		});
+		function shuffle(array) {
+			var currentIndex = array.length,
+				temporaryValue, randomIndex;
+
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex--;
+
+				// And swap it with the current element.
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
+
+			return array;
+		}
+
+		var imageNames = 'img1 img2 img3 img4 img5 img6 home-logo img3 img4'.split(' '),
+			imageSources = imageNames.map(function(name) {
+				return 'images/' + name + '.png';
+			});
+
+		shuffle(imageSources);
 
 		function addItem(img, src) {
 			img.onload = function() {
@@ -200,7 +223,7 @@ BoroniteApp.controller('homeCtrl', [function() {
 			var middleRow = Math.floor(hexSettings.rows / 2);
 
 			for (var i = 0, len = items.length; i < len; i++) {
-				if (i * 2 < hexSettings.columns) {
+				if (i * 2 < (hexSettings.columns + 2)) {
 					hexagonGrid.drawHexAtColRow(i * 2, middleRow, null, items[i].myImg);
 				}
 			}
@@ -211,25 +234,7 @@ BoroniteApp.controller('homeCtrl', [function() {
 		}
 	}, 17);
 
-	function shuffle(array) {
-		var currentIndex = array.length,
-			temporaryValue, randomIndex;
 
-		// While there remain elements to shuffle...
-		while (0 !== currentIndex) {
-
-			// Pick a remaining element...
-			randomIndex = Math.floor(Math.random() * currentIndex);
-			currentIndex--;
-
-			// And swap it with the current element.
-			temporaryValue = array[currentIndex];
-			array[currentIndex] = array[randomIndex];
-			array[randomIndex] = temporaryValue;
-		}
-
-		return array;
-	}
 
 	function openPhotoSwipe(col, row) {
 		var hexSettings = getHexSettings(canvas.width, canvas.height, r);
@@ -256,11 +261,10 @@ BoroniteApp.controller('homeCtrl', [function() {
 			hideAnimationDuration: 0
 		};
 
-		// shuffle(items);
 
 		var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
 		gallery.init();
-		gallery.goTo(col / 2 - 1);
+		gallery.goTo(col / 2);
 
 
 	}
