@@ -54,6 +54,8 @@ app.post('/contact', function(req, res) {
 				"\nPhone Number: " + formData.phoneNumber +
 				"\n\n" + formData.message
 			}, function(error, response) {
+				console.log(error);
+				console.log(response);
 				res.json(verified);
 
 				if (error) {
