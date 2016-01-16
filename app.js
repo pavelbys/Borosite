@@ -4,6 +4,7 @@ var compression = require('compression');
 var request = require('request');
 var nodemailer = require("nodemailer");
 var smtpTransport = require('nodemailer-smtp-transport');
+console.log(process.env.EMAIL);
 
 // Run development server
 // without optimizations on port 3000
@@ -53,6 +54,8 @@ app.post('/contact', function(req, res) {
 				"\nPhone Number: " + formData.phoneNumber +
 				"\n\n" + formData.message
 			}, function(error, response) {
+				res.json(verified);
+
 				if (error) {
 					console.log(error);
 				} else {
@@ -60,8 +63,6 @@ app.post('/contact', function(req, res) {
 				}
 			});
 		}
-
-		res.json(verified);
 	});
 	// console.log(req.body);
 });

@@ -110,6 +110,7 @@ BoroniteApp.controller('contactCtrl', ['$scope', '$location', '$http', function(
 	$scope.submit = function() {
 		console.log($scope.form);
 		$http.post('/contact', $scope.form, {}).then(function success(response) {
+			console.log(response.data);
 			if (response.data.success) {
 				console.log("success");
 				$scope.form.success = true;
