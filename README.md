@@ -1,31 +1,25 @@
 ## Deployment
----
 To deploy the website, you have to be logged into the heroku account by running:
 
     heroku login
 on the command line and putting in the email and password.
-Assuming some changes where made to the website and you would like to put them online, run the following commands:
+Assuming some changes where made to the website and you would like to put them online, run the following command:
 
-	gulp default
-    git push heroku master
+	git push heroku master
 
 Any changes made should always be put on Github as well (weather they are live or not), by running:
 
     git push origin master
 
 ## Running the website
----
-The directory "public" contains all files related to the website content. Once the instructions for deployment are followed a new directory called "dist" will be created that has an optimized version of the website for production use.
-
+The directory "public" contains all files related to the website content. 
 To run the website locally simply run:
 
     node app.js
 
-from the project directory. This will create two versions of the website, one running on port 3000 (non optimized) and one running on port 5000 (optimized for production.
-To open the website in the browser, visit localhost:3000 and localhost:5000 respectively.
+from the project directory. Then open localhost:3000 to view the website.
 
 ## Setting Up
----
 Requirements:
  - Node.js
  - Git
