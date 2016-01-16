@@ -37,7 +37,7 @@ app.post('/contact', function(req, res) {
 
 		if (verified.success) {
 			var transporter = nodemailer.createTransport(smtpTransport({
-				service: 'Godaddy',
+				service: 'Gmail',
 				auth: {
 					user: process.env.EMAIL,
 					pass: process.env.PASS
