@@ -57,7 +57,7 @@ gulp.task('minify-html', function() {
 // Copy any remaining files (images and javascript libraries) that dont need minification
 gulp.task('copy-files', function () {
 	gulp.src('public/images/*').pipe(gulp.dest('dist/images/'));
-	gulp.src('public/js/libraries/*.js').pipe(gulp.dest('dist/js/libraries/'));
+	gulp.src('public/js/libraries/*').pipe(gulp.dest('dist/js/libraries/'));
 });
 
 // Run nodejs server
@@ -70,7 +70,7 @@ gulp.task('run-server', ['build'], function () {
 
 // Build production site
 gulp.task('build', function () {
-	gulp.start('minify-js', 'minify-css', 'minify-html', 'copy-files', 'angular-cache');
+	gulp.start('minify-js', 'minify-css', 'minify-html', 'copy-files', 'angular-cache', 'angular-concat-cache');
 });
 
 // Default task runs all the above tasks
