@@ -148,7 +148,7 @@ BoroniteApp.controller('homeCtrl', [function() {
 			return array;
 		}
 
-		var imageNames = 'img1 img2 img3 img4 img5 img6 home-logo img3 img4'.split(' '),
+		var imageNames = 'img1 img2 img3 img4 img5 img6 logo_only_recentered whitetubes2 whitetubes3 whitetubes4'.split(' '),
 			imageSources = imageNames.map(function(name) {
 				return 'images/' + name + '.png';
 			});
