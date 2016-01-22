@@ -20,6 +20,9 @@ body {
 	overflow-x: hidden;
 }
 
+h1 {
+	color: #ee3337;
+}
 .bnRed {
 	color: #ee3337;
 }
