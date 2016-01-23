@@ -4,7 +4,6 @@ var compression = require('compression');
 var request = require('request');
 var nodemailer = require("nodemailer");
 var smtpTransport = require('nodemailer-smtp-transport');
-console.log(process.env.EMAIL);
 
 // Run development server
 // without optimizations on port 3000
@@ -36,34 +35,21 @@ app.post('/contact', function(req, res) {
 		var verified = JSON.parse(body);
 
 		if (verified.success) {
-			var transporter = nodemailer.createTransport(smtpTransport({
-				service: 'Gmail',
-				auth: {
-					user: process.env.EMAIL,
-					pass: process.env.PASS
+			request.post({
+				url: "http://formspree.io/" + process.env.EMAILTO, form: {
+					text: "Name: " + formData.name +
+					"\nCompany: " + formData.company +
+					"\nEmail: " + formData.email +
+					"\nPhone Number: " + formData.phoneNumber +
+					"\n\n" + formData.message
+				}, headers: {
+					'Referer': 'http://boronite.com'
 				}
-			}));
-
-			transporter.sendMail({
-				from: formData.email, // sender address
-				to: process.env.EMAILTO, // list of receivers
-				subject: "Boronite.com - " + formData.email, // Subject line
-				text: "Name: " + formData.name +
-				"\nCompany: " + formData.company +
-				"\nEmail: " + formData.email +
-				"\nPhone Number: " + formData.phoneNumber +
-				"\n\n" + formData.message
-			}, function(error, response) {
-				console.log(error);
-				console.log(response);
-				res.json(verified);
-
-				if (error) {
-					console.log(error);
-				} else {
-					console.log('Message sent');
-				}
+			}, function (err, httpResonse, body) {
+				console.log(body);
 			});
+
+			res.json(verified);
 		}
 	});
 	// console.log(req.body);
