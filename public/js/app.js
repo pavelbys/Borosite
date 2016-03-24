@@ -19,6 +19,7 @@ var BoroniteApp = angular.module('BoroniteApp', ['ngRoute', 'templates']);
 		new MenuItem('About', '/about'),
 		new MenuItem('Industries', '/industries'),
 		new MenuItem('Careers', '/careers'),
+		new MenuItem('Our Team', '/ourTeam'),
 		new MenuItem('Contact Us', '/contact', 'contactCtrl')
 	];
 
@@ -148,7 +149,7 @@ BoroniteApp.controller('homeCtrl', [function() {
 			return array;
 		}
 
-		var imageNames = 'img1 img2 img3 img4 img5 img6 logo_only_recentered whitetubes2 whitetubes3 whitetubes4'.split(' '),
+		var imageNames = 'img1 img2 img3 img4 img5 img6 whitetubes2 whitetubes3 whitetubes4'.split(' '),
 			imageSources = imageNames.map(function(name) {
 				return 'images/' + name + '.png';
 			});
