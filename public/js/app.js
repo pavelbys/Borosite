@@ -68,7 +68,7 @@ BoroniteApp.controller('defaultCtrl', [function() {
 }]);
 
 BoroniteApp.controller('mainCtrl', ['$scope', function($scope) {
-	$scope.websiteLink = 'www.boronite.com/#!';
+	$scope.websiteLink = '/#!';
 }]);
 
 BoroniteApp.controller('menuController', ['$scope', 'menuItems', '$location', function($scope, menuItems, $location) {
