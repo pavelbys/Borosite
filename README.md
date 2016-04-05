@@ -7,15 +7,17 @@ Assuming some changes where made to the website and you would like to put them o
 
 	git push heroku master
 
-Any changes made should always be put on Github as well (weather they are live or not), by running:
+Any changes made should always be put on Github as well (whether they are live or not), by running:
 
     git push origin master
 
+Go to public/js/app.js and change "localhost:3000" to "www.boronite.com" inside the variable $scope.websiteLink.
+
 ## Running the website
 The directory "public" contains all files related to the website content. 
-To run the website locally simply run:
+To run the website locally simply run the following (adding & makes it run as a background process - allows use of the shell for other commands):
 
-    node app.js
+    node app.js &
 
 from the project directory. Then open localhost:3000 to view the website.
 
@@ -25,7 +27,7 @@ Requirements:
  - Git
  - Heroku toolbelt
 
-Once Node.js, Git and Heroku are installed run, install Gulp (a nodejs libary by running:
+Once Node.js, Git and Heroku are installed, run install Gulp (a nodejs libary) by running:
 
     npm install -g gulp
 Clone the code from github by running:

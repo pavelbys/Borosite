@@ -2,7 +2,6 @@ angular.module('templates', []);
 
 var BoroniteApp = angular.module('BoroniteApp', ['ngRoute', 'templates']);
 
-
 (function() {
 
 	var defaultCtrl = 'defaultCtrl';
@@ -19,7 +18,7 @@ var BoroniteApp = angular.module('BoroniteApp', ['ngRoute', 'templates']);
 		new MenuItem('About', '/about'),
 		new MenuItem('Industries', '/industries'),
 		new MenuItem('Careers', '/careers'),
-		new MenuItem('Our Team', '/ourTeam'),
+		new MenuItem('Team', '/ourTeam'),
 		new MenuItem('Contact Us', '/contact', 'contactCtrl')
 	];
 
@@ -68,6 +67,10 @@ BoroniteApp.controller('defaultCtrl', [function() {
 
 }]);
 
+BoroniteApp.controller('mainCtrl', ['$scope', function($scope) {
+	$scope.websiteLink = 'www.boronite.com/#!';
+}]);
+
 BoroniteApp.controller('menuController', ['$scope', 'menuItems', '$location', function($scope, menuItems, $location) {
 	$scope.menuItems = menuItems;
 
@@ -81,10 +84,8 @@ BoroniteApp.controller('menuController', ['$scope', 'menuItems', '$location', fu
 }]);
 
 BoroniteApp.controller('contactCtrl', ['$scope', '$location', '$http', function($scope, $location, $http) {
-	$scope.form = {
-		recaptcha: false,
-		success: false
-	};
+
+	console.log($scope.websiteLink);
 
 	$scope.form = {
 		recaptcha: false
