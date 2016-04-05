@@ -11,7 +11,7 @@ Any changes made should always be put on Github as well (whether they are live o
 
     git push origin master
 
-Go to public/js/app.js and change "localhost:3000" to "www.boronite.com" inside the variable $scope.websiteLink.
+Go to public/js/app.js and change "localhost:3000/#" to "/#" inside the variable $scope.websiteLink.
 
 ## Running the website
 The directory "public" contains all files related to the website content. 
