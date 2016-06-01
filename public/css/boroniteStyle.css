@@ -18,6 +18,8 @@ body {
 	overflow-y: scroll;
 	position: relative;
 	overflow-x: hidden;
+
+	-webkit-text-size-adjust: 100%;
 }
 
 h1 {
@@ -228,7 +230,7 @@ textarea {
 	}
 
 	#content {
-		text-align:justify;
+		text-align: justify;
 	}
 }
 
