@@ -16,7 +16,7 @@ var BoroniteApp = angular.module('BoroniteApp', ['ngRoute', 'templates']);
 	var menuItems = [
 		new MenuItem('Home', '/home', 'homeCtrl'),
 		new MenuItem('About', '/about'),
-		new MenuItem('Industries', '/industries'),
+		new MenuItem('Applications', '/applications'),
 		new MenuItem('Careers', '/careers'),
 		new MenuItem('Team', '/ourTeam'),
 		new MenuItem('Contact Us', '/contact', 'contactCtrl')
