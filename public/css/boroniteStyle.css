@@ -132,9 +132,6 @@ img {
 	position: relative;
 	margin: auto;
 	max-width: 700px;
-
-	margin-left: 30px;
-	margin-right: 30px;
 }
 
 #separator {
@@ -231,6 +228,11 @@ textarea {
 
 	#content {
 		text-align: justify;
+	}
+
+	.centered {
+		margin-left: 30px;
+		margin-right: 30px;
 	}
 }
 
