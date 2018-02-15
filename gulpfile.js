@@ -56,6 +56,7 @@ gulp.task('minify-html', function() {
 
 // Copy any remaining files (images and javascript libraries) that dont need minification
 gulp.task('copy-files', function () {
+	gulp.src('public/documents/**/*').pipe(gulp.dest('dist/documents/'));
 	gulp.src('public/images/**/*').pipe(gulp.dest('dist/images/'));
 	gulp.src('public/js/libraries/**/*').pipe(gulp.dest('dist/js/libraries/'));
 });
