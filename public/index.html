@@ -31,7 +31,7 @@
         <!-- <br-header selected="page"></br-header> -->
         <div id="header" ng-controller="menuController">
             <div id="headerNav">
-                <img src="images/header-logo.png" class="headerLogo"/>
+                <a href="#!/home"><img src="images/header-logo.png" class="headerLogo"/></a>
                 <ul id="mainMenu">
                     <li class="menuItem" ng-repeat="menuItem in menuItems"
                         ng-class="{selected: isSelected(menuItem)}" title="{{menuItem.text}}">
