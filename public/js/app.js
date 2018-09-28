@@ -150,7 +150,7 @@ BoroniteApp.controller('homeCtrl', [function() {
 			return array;
 		}
 
-		var imageNames = 'img1 img3 img4 img5 img6 whitetubes2 whitetubes3 whitesheet whiteweb SW-IIILB4 SW-FIB1 SW-FIB2 SW-FIB3'.split(' '),
+		var imageNames = 'img1 img3 img4 img5 img6 whitetubes2 whitetubes3 whitesheet whitesheet2 whiteweb SW-IIILB4 SW-PVR5 SW-FIB1 SW-FIB2 SW-FIB3'.split(' '),
 			imageSources = imageNames.map(function(name) {
 				return 'images/' + name + '.png';
 			});
