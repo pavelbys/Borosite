@@ -47,6 +47,16 @@ h1 {
 	background-color: white;
 }
 
+#box {
+  width: 750px;
+  max-width: 100%;
+  height: auto;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #BFBFBF;
+  background-color: white;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+
 #footer {
 	position: absolute;
 	bottom: 0;
